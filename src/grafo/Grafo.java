@@ -13,6 +13,11 @@ public class Grafo {
 		matriz = new int[tam][tam];
 		this.tam = tam;
 	}
+	
+	public int getTam(){
+		
+		return this.tam; 
+	}
 
 	public boolean sonAdyacentes(int i, int j) {
 
@@ -29,6 +34,7 @@ public class Grafo {
 
 		if (i < tam && j < tam && i >= 0 && j >= 0) {
 			matriz[i][j] = 1;
+			matriz[j][i] = 1;
 		}
 	}
 
