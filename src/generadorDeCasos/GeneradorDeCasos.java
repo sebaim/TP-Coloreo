@@ -48,7 +48,7 @@ public class GeneradorDeCasos {
 		} while (p < 0 || p > 1);
 
 		System.out
-				.println("Ingrese el nombre que tendra el archivo de este caso (Sin la extensión): ");
+				.println("Ingrese el nombre que tendra el archivo de este caso (Sin la extensiï¿½n): ");
 		fileName = console.next();
 
 		console.close();
@@ -69,7 +69,6 @@ public class GeneradorDeCasos {
 				double random = r.nextDouble();
 				if (random <= p) {
 					grafo.setearAdyacencia(i, j);
-					grafo.setearAdyacencia(j, i);
 					A++;
 				}
 			}
