@@ -1,6 +1,6 @@
 package grafo;
 
-/**
+/** 
  * Clase que manipula un grafo implementando matriz de adyacencia.
  */
 public class Grafo {
