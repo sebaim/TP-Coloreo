@@ -48,7 +48,7 @@ public class GeneradorDeCasos {
 		} while (p < 0 || p > 1);
 
 		System.out
-				.println("Ingrese el nombre que tendra el archivo de este caso (Sin la extensiÃ³n): ");
+				.println("Ingrese el nombre que tendra el archivo de este caso (Sin la extensión): ");
 		fileName = console.next();
 
 		console.close();
@@ -68,7 +68,6 @@ public class GeneradorDeCasos {
 				Random r = new Random();
 				double random = r.nextDouble();
 				if (random <= p) {
-
 					grafo.setearAdyacencia(i, j);
 					grafo.setearAdyacencia(j, i);
 					A++;
@@ -88,7 +87,6 @@ public class GeneradorDeCasos {
 		
 		// Escritura en el archivo
 		try {
-
 			// Apertura del archivo de salida
 			salida = new FileWriter(path + fileName + extension);
 			psalida = new PrintWriter(salida);
@@ -99,28 +97,24 @@ public class GeneradorDeCasos {
 			psalida.print(N + "\t" + A + "\t%");
 			DecimalFormat f = new DecimalFormat("##.00");
 			psalida.print(f.format(adyacencia * 100));
-			psalida.print("\t" + gradoMax + "\t" + gradoMin + "\n");
+			psalida.println("\t" + gradoMax + "\t" + gradoMin);
 
 			// Se imprimen los nodos adyacentes
 			for (int i = 0; i < N; i++) {
 				for (int j = 0; j < N; j++) {
 
 					if (grafo.sonAdyacentes(i, j)) {
-
 						psalida.println(i + "\t" + j);
 					}
 				}
 			}
 
 		} catch (IOException e) {
-
 			e.printStackTrace();
 
 		} finally {
 			try {
-
 				System.out.println("Fin del proceso.");
-
 				if (null != salida)
 					salida.close();
 			} catch (Exception e2) {
@@ -128,5 +122,4 @@ public class GeneradorDeCasos {
 			}
 		}
 	}
-
 }
