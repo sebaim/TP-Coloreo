@@ -12,13 +12,14 @@ public class resolucion {
 	public static void main(String[] args) {
 
 	// se cargan en memoria los grafos desde el archivo input.
-	Grafo grafo90 = new Grafo("src/resolucionDelProblema/caso_500N_90Adyacencia.in"); // 90% de adyacencia
-	Grafo grafo50 = new Grafo("src/resolucionDelProblema/caso_500N_50Adyacencia.in"); // 50% de adyacencia
-	Grafo grafo75 = new Grafo("src/resolucionDelProblema/caso_500N_75Adyacencia.in"); // 75% de adyacencia
+	Grafo grafo90 = new Grafo("src/resolucionDelTP/caso_500N_90Adyacencia.in"); // 90% de adyacencia
+	Grafo grafo50 = new Grafo("src/resolucionDelTP/caso_500N_50Adyacencia.in"); // 50% de adyacencia
+	Grafo grafo75 = new Grafo("src/resolucionDelTP/caso_500N_75Adyacencia.in"); // 75% de adyacencia
 
+	System.out.println(grafo90.gradoMax());
+	System.out.println(grafo90.gradoMin());
 	
-	
-	// Se corre entre 100 y 100000 veces el algoritmo bÃ¡sico secuencial
+	// Se corre entre 100 y 100000 veces el algoritmo básico secuencial
 	// y se busca la cantidad mas chica de colores y en que corrida salio
 	// con una entrada que en este caso es el grafo de 75% de adyacencia.
 	int nroCromaticoMinimo = 0;
@@ -34,8 +35,8 @@ public class resolucion {
 			nroDePasada = i;
 		}
 	}
-	System.out.println("Cantidad mÃ­nima de coloreo: " + nroCromaticoMinimo);
-	System.out.println("NÃºmero de Pasada: " + nroDePasada);
+	System.out.println("Cantidad mínima de coloreo: " + nroCromaticoMinimo);
+	System.out.println("Número de Pasada: " + nroDePasada);
 	
 
 	}

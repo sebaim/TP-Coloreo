@@ -13,11 +13,11 @@ public class Grafo {
 
 	int[][] matriz;
 	int tam;
-
+	
 	public Grafo(Integer tam) {
 
-		matriz = new int[tam][tam];
-		this.tam = tam;
+		this.matriz = new int[tam][tam];
+		this.tam = tam;		
 	}
 
 	/*
@@ -110,6 +110,71 @@ public class Grafo {
 			System.out.print("\n");
 		}
 	}
+	
+	private void inviertoFilas(int fila1, int fila2) {
+		int[] l1;
+		int[] l2;
+		l1 = this.matriz[fila1];
+		l2 = this.matriz[fila2];
+
+		this.matriz[fila1] = l2;
+		this.matriz[fila2] = l1;
+	}
+	
+	public void ordenaMayorAMenorGrado()
+	{
+		int grado1;
+		int grado2;
+		boolean ordenado = false;
+		
+		while (!ordenado)
+		{
+			ordenado = true;
+			for (int i = 0; i< this.tam-1 ; i++)
+			{
+				grado1 = gradoVertice(i);
+				grado2 = gradoVertice(i+1);
+								
+				if (grado1 < grado2)
+				{
+					inviertoFilas(i, i+1);
+					ordenado = false;					
+				}				
+			}			
+		}
+	}
+	
+	public void ordenaMenorAMayorGrado()
+	{
+		int grado1;
+		int grado2;
+		boolean ordenado = false;
+		
+		while (!ordenado)
+		{
+			ordenado = true;
+			for (int i = 0; i< this.tam-1 ; i++)
+			{
+				grado1 = gradoVertice(i);
+				grado2 = gradoVertice(i+1);
+								
+				if (grado1 > grado2)
+				{
+					inviertoFilas(i, i+1);
+					ordenado = false;					
+				}				
+			}			
+		}	
+	}
+	
+	public int gradoVertice(int vertice)
+	{
+		int retorno = 0;
+		for (int i = 0; i< this.tam; i ++)
+			retorno+=this.matriz[vertice][i];
+		
+		return retorno;
+	}
 
 	public int gradoMax() {
 
@@ -117,19 +182,17 @@ public class Grafo {
 
 		for (int i = 0; i < this.tam; i++) {
 
-			int aux = 0;
+			int aux;
+			
+			aux = gradoVertice(i);
 
-			for (int j = 0; j < this.tam; j++) {
-
-				if (matriz[i][j] == 1) {
-
-					aux++;
-				}
-
-			}
-
+//			for (int j = 0; j < this.tam; j++) {
+//
+//				if (matriz[i][j] == 1) {
+//					aux++;
+//				}
+//			}
 			if (aux > retorno) {
-
 				retorno = aux;
 			}
 		}
@@ -143,16 +206,18 @@ public class Grafo {
 
 		for (int i = 0; i < this.tam; i++) {
 
-			int aux = 0;
+			int aux;
+			
+			aux = gradoVertice(i);
 
-			for (int j = 0; j < this.tam; j++) {
-
-				if (matriz[i][j] == 1) {
-
-					aux++;
-				}
-
-			}
+//			for (int j = 0; j < this.tam; j++) {
+//
+//				if (matriz[i][j] == 1) {
+//
+//					aux++;
+//				}
+//
+//			}
 
 			if (aux < retorno) {
 
@@ -165,7 +230,14 @@ public class Grafo {
 
 	public static void main(String[] args) {
 
-		Grafo g = new Grafo("LoteDePruebas/InputGenerados/1.in");
+		Grafo g = new Grafo("LoteDePruebas/InputGenerados/grafoPruebaOrden.in");
+		g.mostrarMatriz();
+		g.ordenaMayorAMenorGrado();
+		System.out.println("Ordenado de mayor a menor:");
+		g.mostrarMatriz();
+		
+		g.ordenaMenorAMayorGrado();
+		System.out.println("Ordenado de menor a mayor:");
 		g.mostrarMatriz();
 	}
 

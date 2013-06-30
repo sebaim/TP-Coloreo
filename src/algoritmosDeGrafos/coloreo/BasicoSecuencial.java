@@ -46,7 +46,7 @@ public class BasicoSecuencial {
 					aux = 0;
 				}
 				
-				// Se almacena la cantidad mÃ¡xima cantidad de colores
+				// Se almacena la cantidad máxima cantidad de colores
 				if (vectorDeColoreo[i] > this.maximoColores) {
 					this.maximoColores = vectorDeColoreo[i];
 				}
