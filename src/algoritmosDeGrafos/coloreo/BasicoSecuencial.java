@@ -44,19 +44,19 @@ public class BasicoSecuencial {
 		}
 
 
-		g.mostrarMatriz();
+/*		g.mostrarMatriz();
 		for (int i = 0; i < g.getTam(); i++) {
 
 			System.out.println(i + ": " + vectorDeColoreo[i]);
 		}
 		System.out.println(this.maximoColores);
-		
+*/
 
 		return vectorDeColoreo;
 
 	}
 
-	public int getMaximiColores(){
+	public int getMaximoColores(){
 		
 		return this.maximoColores;
 	}
