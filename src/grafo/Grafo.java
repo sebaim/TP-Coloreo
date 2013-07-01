@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Random;
 
 /**
  * Clase que manipula un grafo implementando matriz de adyacencia.
@@ -13,11 +14,13 @@ public class Grafo {
 
 	int[][] matriz;
 	int tam;
+	int [] orden;
 	
 	public Grafo(Integer tam) {
 
 		this.matriz = new int[tam][tam];
-		this.tam = tam;		
+		this.tam = tam;
+		this.orden = new int [tam];
 	}
 
 	/*
@@ -40,7 +43,10 @@ public class Grafo {
 			String[] spliteado = linea.split("\t");
 			this.tam = Integer.parseInt(spliteado[0]);
 			this.matriz = new int[this.tam][this.tam];
-		
+			this.orden = new int [this.tam];	
+			
+			for (int i=0;i<this.tam; i++)
+				this.orden[i]=i;
 			// Se setean las adyacencias
 			int cantAristas = Integer.parseInt(spliteado[1]);
 			for(int i = 0; i < cantAristas; i++){
@@ -111,14 +117,41 @@ public class Grafo {
 		}
 	}
 	
-	private void inviertoFilas(int fila1, int fila2) {
-		int[] l1;
-		int[] l2;
-		l1 = this.matriz[fila1];
-		l2 = this.matriz[fila2];
+	public void mostrarOrden(){
+		for (int i=0; i< tam; i++)
+			System.out.print(this.orden[i]);
+		System.out.println();
+	}
+	
+	private void inviertoOrden(int n1, int n2) {
+		int l1;
+		int l2;
+		l1 = this.orden[n1];
+		l2 = this.orden[n2];
 
-		this.matriz[fila1] = l2;
-		this.matriz[fila2] = l1;
+		this.orden[n1] = l2;
+		this.orden[n2] = l1;
+	}
+	
+	
+	public void ordenaAleatorio()
+	{
+		Random generador = new Random();
+		
+		int random = generador.nextInt(1000);
+		
+//		for (int i=0; i< this.tam ; i++)
+//		{
+			for (int j=0; j< random ; j++)
+				inviertoOrden(generador.nextInt(this.tam), generador.nextInt(this.tam));
+		//}	
+		
+		
+	}
+	
+	public int getVertice(int n)
+	{
+		return this.orden[n];
 	}
 	
 	public void ordenaMayorAMenorGrado()
@@ -132,12 +165,12 @@ public class Grafo {
 			ordenado = true;
 			for (int i = 0; i< this.tam-1 ; i++)
 			{
-				grado1 = gradoVertice(i);
-				grado2 = gradoVertice(i+1);
+				grado1 = gradoVertice(this.orden[i]);
+				grado2 = gradoVertice(this.orden[i+1]);
 								
 				if (grado1 < grado2)
 				{
-					inviertoFilas(i, i+1);
+					inviertoOrden(i, i+1);
 					ordenado = false;					
 				}				
 			}			
@@ -155,12 +188,12 @@ public class Grafo {
 			ordenado = true;
 			for (int i = 0; i< this.tam-1 ; i++)
 			{
-				grado1 = gradoVertice(i);
-				grado2 = gradoVertice(i+1);
+				grado1 = gradoVertice(this.orden[i]);
+				grado2 = gradoVertice(this.orden[i+1]);
 								
 				if (grado1 > grado2)
 				{
-					inviertoFilas(i, i+1);
+					inviertoOrden(i, i+1);
 					ordenado = false;					
 				}				
 			}			
@@ -230,15 +263,17 @@ public class Grafo {
 
 	public static void main(String[] args) {
 
-		Grafo g = new Grafo("LoteDePruebas/InputGenerados/grafoPruebaOrden.in");
+		Grafo g = new Grafo("LoteDePruebas/InputGenerados/grafoLALALA.in");
 		g.mostrarMatriz();
+		g.mostrarOrden();
 		g.ordenaMayorAMenorGrado();
 		System.out.println("Ordenado de mayor a menor:");
-		g.mostrarMatriz();
-		
+		g.mostrarOrden();
+				
 		g.ordenaMenorAMayorGrado();
 		System.out.println("Ordenado de menor a mayor:");
-		g.mostrarMatriz();
+		g.mostrarOrden();
+		
 	}
 
 }

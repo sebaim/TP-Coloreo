@@ -31,7 +31,7 @@ public class BasicoSecuencial {
 			
 			while (aux == 1) {
 				for (int j = 0; j < grafo.getTam(); j++) {
-					if (grafo.sonAdyacentes(i, j)) {
+					if (grafo.sonAdyacentes(grafo.getVertice(i), grafo.getVertice(j))) {
 						if (vectorDeColoreo[i] == vectorDeColoreo[j]) {
 							zz = 1;
 						} 
@@ -54,13 +54,13 @@ public class BasicoSecuencial {
 		}
 
 
-/*		g.mostrarMatriz();
-		for (int i = 0; i < g.getTam(); i++) {
+		//g.mostrarMatriz();
+//		for (int i = 0; i < grafo.getTam(); i++) {
+//
+//			System.out.println(grafo.getVertice(i) + ": " + vectorDeColoreo[i]);
+//		}
+		//System.out.println(this.maximoColores);
 
-			System.out.println(i + ": " + vectorDeColoreo[i]);
-		}
-		System.out.println(this.maximoColores);
-*/
 	}
 
 	public int getMaximoColores(){

@@ -22,15 +22,17 @@ public class resolucion {
 	// Se corre entre 100 y 100000 veces el algoritmo básico secuencial
 	// y se busca la cantidad mas chica de colores y en que corrida salio
 	// con una entrada que en este caso es el grafo de 75% de adyacencia.
-	int nroCromaticoMinimo = 0;
+	int nroCromaticoMinimo = grafo50.getTam();
 	int nroDePasada = 0;
-	int cantDePasadas = 10; //TODO cuantas?
+	int cantDePasadas = 100; //TODO cuantas?
 	for ( int i = 1; i <= cantDePasadas; i++){
 		
-		BasicoSecuencial b = new BasicoSecuencial(grafo75); // TODO cual alg usar??
+		grafo50.ordenaAleatorio();
+				
+		BasicoSecuencial b = new BasicoSecuencial(grafo50); // TODO cual alg usar??
 		b.colorear();
-		if (b.getMaximoColores() > nroCromaticoMinimo){
 			
+		if (b.getMaximoColores() < nroCromaticoMinimo){			
 			nroCromaticoMinimo = b.getMaximoColores();
 			nroDePasada = i;
 		}
