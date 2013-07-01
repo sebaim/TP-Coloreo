@@ -103,6 +103,7 @@ public class Grafo {
 
 		if (i < tam && j < tam && i >= 0 && j >= 0) {
 			matriz[i][j] = 0;
+			matriz[j][i] = 0;
 		}
 	}
 
