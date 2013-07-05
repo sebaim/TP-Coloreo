@@ -17,6 +17,7 @@ public class GrafoPonderado {
 	double[][] matriz;
 	int tam;
 	int [] orden;
+	int cantAristas;
 	
 	public GrafoPonderado(Integer tam) {
 
@@ -50,7 +51,7 @@ public class GrafoPonderado {
 			for (int i=0;i<this.tam; i++)
 				this.orden[i]=i;
 			// Se setean las adyacencias
-			int cantAristas = Integer.parseInt(spliteado[1]);
+			cantAristas = Integer.parseInt(spliteado[1]);
 			for(int i = 0; i < cantAristas; i++){
 				
 				linea = br.readLine();
@@ -80,6 +81,9 @@ public class GrafoPonderado {
 	public int getTam() {
 
 		return this.tam;
+	}
+	public int getCantAristas(){
+		return this.cantAristas;
 	}
 
 	public boolean sonAdyacentes(int i, int j) {
