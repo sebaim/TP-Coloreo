@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+import algoritmosDeGrafos.coloreo.Dijkstra;
+
 /**
  * Clase que manipula un grafo implementando matriz de adyacencia.
  */
@@ -256,6 +258,10 @@ public class GrafoPonderado {
 
 		GrafoPonderado g = new GrafoPonderado("LoteDePruebas/InputGenerados/GrafoPonderadoNoDirigido.in");
 		g.mostrarMatriz();
+		
+		Dijkstra dijkstra = new Dijkstra(g);
+		double distancia = dijkstra.resuelveCaminoMasCorto(0, 4);
+		System.out.println(distancia);
 //		g.mostrarOrden();
 //		g.ordenaMayorAMenorGrado();
 //		System.out.println("Ordenado de mayor a menor:");
