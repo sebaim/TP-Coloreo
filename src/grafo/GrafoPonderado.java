@@ -149,6 +149,12 @@ public class GrafoPonderado {
 		
 	}
 	
+	public double getPesoArista(int i, int j) {
+		
+		return (matriz[i][j]);
+
+		}
+	
 	public int getVertice(int n)
 	{
 		return this.orden[n];
