@@ -1,0 +1,18 @@
+muestra(m1,100,1000).
+muestra(m2,110,1000).
+muestra(m3,120,1000).
+muestra(m4,90,1000).
+muestra(m5,10,1000).
+
+maximo(X,Y,X):-X > Y.
+maximo(X,Y,Y):-X < Y.
+
+muestra_valida(X,Min2,Max2):-muestra(X,Min2,Max2),(Max2-Min2)>=900.
+
+
+
+diferencia(X,Result):-muestra_valida(X,Min2,Max2),Result is (Max2-Min2).
+
+producto_cartesiano(R1,R2):-diferencia(_,R1),diferencia(_,R2).
+complemento_del_minimo(X):-producto_cartesiano(X,Y),X>Y.
+minimo(X,Y):-diferencia(Y,X),not(complemento_del_minimo(X)).
